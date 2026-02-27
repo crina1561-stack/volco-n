@@ -139,22 +139,26 @@ export default function HomePage({ onNavigate }: HomePageProps) {
 
       <div className="bg-white py-8 shadow-md">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
             {[
-              { icon: Truck, title: 'Transport Gratuit', desc: 'Pentru comenzi peste 500 RON' },
-              { icon: Shield, title: 'Garanție Extinsă', desc: 'Până la 3 ani' },
-              { icon: Zap, title: 'Livrare Rapidă', desc: '24-48 ore' },
-              { icon: Award, title: 'Calitate Premium', desc: 'Produse certificate' }
+              { icon: '📦', title: 'Deschiderea coletului', desc: 'la livrare', page: 'feature-delivery' },
+              { icon: '↩️', title: '30 de zile', desc: 'drept de retur', page: 'feature-returns' },
+              { icon: '💳', title: 'Plata in rate', desc: 'fara dobanda', page: 'feature-installments' },
+              { icon: '🛡️', title: 'Garantii', desc: 'si service', page: 'feature-warranty' }
             ].map((feature, index) => (
-              <div key={index} className="flex items-center gap-4">
-                <div className="p-3 bg-gradient-to-br from-red-50 to-red-100 rounded-lg">
-                  <feature.icon className="text-red-600" size={32} />
+              <button
+                key={index}
+                onClick={() => onNavigate(feature.page)}
+                className="flex items-center gap-3 hover:bg-gray-50 p-3 rounded-xl transition-all hover:shadow-md"
+              >
+                <div className="text-3xl md:text-4xl flex-shrink-0">
+                  {feature.icon}
                 </div>
-                <div>
-                  <h4 className="font-bold text-gray-900">{feature.title}</h4>
-                  <p className="text-sm text-gray-600">{feature.desc}</p>
+                <div className="text-left">
+                  <h4 className="font-bold text-gray-900 text-sm md:text-base">{feature.title}</h4>
+                  <p className="text-xs md:text-sm text-gray-600">{feature.desc}</p>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -163,7 +167,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="mb-12">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-3xl font-bold text-gray-900">Categorii Principale</h2>
+            <h2 className="text-3xl font-bold text-gray-900">Categorii</h2>
             <button
               onClick={() => onNavigate('categories')}
               className="text-red-600 hover:text-red-700 font-semibold flex items-center gap-1"

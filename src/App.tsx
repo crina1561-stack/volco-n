@@ -15,6 +15,7 @@ import SearchModal from './pages/SearchModal';
 import CookieConsent from './components/CookieConsent';
 import LegalPage from './pages/LegalPage';
 import VendorMarketplacePage from './pages/VendorMarketplacePage';
+import FeaturesPage from './pages/FeaturesPage';
 import { CheckCircle } from 'lucide-react';
 
 function AppContent() {
@@ -80,10 +81,15 @@ function AppContent() {
         {currentPage === 'orders' && <ProfilePage onNavigate={navigate} />}
         {currentPage === 'vendor-marketplace' && <VendorMarketplacePage onNavigate={navigate} />}
         {currentPage === 'favorites' && <ProfilePage onNavigate={navigate} />}
+        {currentPage === 'wishlist' && <ProfilePage onNavigate={navigate} />}
         {currentPage === 'despre' && <LegalPage slug="despre-noi" onNavigate={navigate} />}
         {currentPage === 'contact' && <LegalPage slug="contact" onNavigate={navigate} />}
         {currentPage === 'politica-confidentialitate' && <LegalPage slug="politica-confidentialitate" onNavigate={navigate} />}
         {currentPage.startsWith('legal/') && <LegalPage slug={currentPage.replace('legal/', '')} onNavigate={navigate} />}
+        {currentPage === 'feature-delivery' && <FeaturesPage feature="delivery" onNavigate={navigate} />}
+        {currentPage === 'feature-returns' && <FeaturesPage feature="returns" onNavigate={navigate} />}
+        {currentPage === 'feature-installments' && <FeaturesPage feature="installments" onNavigate={navigate} />}
+        {currentPage === 'feature-warranty' && <FeaturesPage feature="warranty" onNavigate={navigate} />}
         {currentPage === 'order-success' && (
           <div className="min-h-screen bg-gray-50 flex items-center justify-center">
             <div className="bg-white rounded-2xl shadow-xl p-12 text-center max-w-md">

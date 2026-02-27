@@ -44,11 +44,11 @@ export default function Header({ onNavigate, currentPage, onSearchOpen }: Header
       <div className="border-b">
         <div className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between gap-3">
-            <button onClick={() => onNavigate('home')} className="flex items-center group">
+            <button onClick={() => onNavigate('home')} className="flex items-center group flex-shrink-0">
               <img
                 src="/ChatGPT_Image_20_nov._2025,_05_46_43 copy.png"
                 alt="VOLCO Logo"
-                className="h-32 md:h-40 w-auto group-hover:scale-105 transition-transform"
+                className="h-20 md:h-32 w-auto group-hover:scale-105 transition-transform"
               />
             </button>
 
@@ -70,19 +70,19 @@ export default function Header({ onNavigate, currentPage, onSearchOpen }: Header
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <button
                 onClick={onSearchOpen}
-                className="md:hidden p-2.5 hover:bg-gray-100 rounded-xl transition"
+                className="md:hidden p-2 hover:bg-gray-100 rounded-xl transition"
               >
-                <Search size={22} />
+                <Search size={20} />
               </button>
 
               {user ? (
                 <div className="relative">
                   <button
                     onClick={() => setUserMenuOpen(!userMenuOpen)}
-                    className="flex items-center gap-2 px-4 py-2.5 hover:bg-gray-50 rounded-xl transition border border-gray-200"
+                    className="flex items-center gap-1 px-2 md:px-4 py-2 hover:bg-gray-50 rounded-xl transition border border-gray-200"
                   >
                     <User size={20} />
                     <div className="hidden lg:block text-left">
@@ -148,7 +148,7 @@ export default function Header({ onNavigate, currentPage, onSearchOpen }: Header
               ) : (
                 <button
                   onClick={() => onNavigate('login')}
-                  className="flex items-center gap-2 px-4 py-2.5 hover:bg-gray-50 rounded-xl transition border border-gray-200"
+                  className="flex items-center gap-1 px-2 md:px-4 py-2 hover:bg-gray-50 rounded-xl transition border border-gray-200"
                 >
                   <User size={20} />
                   <div className="hidden lg:block text-left">
@@ -160,15 +160,15 @@ export default function Header({ onNavigate, currentPage, onSearchOpen }: Header
 
               <button
                 onClick={() => onNavigate('wishlist')}
-                className="hidden md:flex items-center gap-2 px-4 py-2.5 hover:bg-gray-50 rounded-xl transition border border-gray-200 relative"
+                className="hidden md:flex items-center gap-1 px-2 md:px-3 py-2 hover:bg-gray-50 rounded-xl transition border border-gray-200 relative"
               >
                 <Heart size={20} />
-                <span className="text-sm font-medium">Favorite</span>
+                <span className="text-sm font-medium hidden lg:inline">Favorite</span>
               </button>
 
               <button
                 onClick={() => onNavigate('cart')}
-                className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-[#0A2540] to-[#0d3659] text-white rounded-xl hover:shadow-lg transition-all relative font-semibold"
+                className="flex items-center gap-1 px-2 md:px-4 py-2 bg-gradient-to-r from-[#0A2540] to-[#0d3659] text-white rounded-xl hover:shadow-lg transition-all relative font-semibold"
               >
                 <ShoppingCart size={20} />
                 {totalItems > 0 && (
@@ -193,30 +193,103 @@ export default function Header({ onNavigate, currentPage, onSearchOpen }: Header
               <div className="flex flex-col gap-2">
                 <button
                   onClick={() => {
-                    onNavigate('products');
+                    onNavigate('category', 'telefoane-tablete');
                     setMobileMenuOpen(false);
                   }}
-                  className="px-4 py-3 text-left hover:bg-gray-50 rounded-xl transition font-medium"
+                  className="px-4 py-3 text-left hover:bg-gray-50 rounded-xl transition font-medium flex items-center gap-3"
                 >
-                  Toate Produsele
+                  <span className="text-xl">📱</span>
+                  <span>Telefoane & Tablete</span>
                 </button>
                 <button
                   onClick={() => {
-                    onNavigate('categories');
+                    onNavigate('category', 'laptopuri');
                     setMobileMenuOpen(false);
                   }}
-                  className="px-4 py-3 text-left hover:bg-gray-50 rounded-xl transition font-medium"
+                  className="px-4 py-3 text-left hover:bg-gray-50 rounded-xl transition font-medium flex items-center gap-3"
                 >
-                  Categorii
+                  <span className="text-xl">💻</span>
+                  <span>Laptopuri</span>
                 </button>
                 <button
                   onClick={() => {
-                    onNavigate('offers');
+                    onNavigate('category', 'calculatoare-componente');
                     setMobileMenuOpen(false);
                   }}
-                  className="px-4 py-3 text-left hover:bg-gray-50 rounded-xl transition font-medium text-[#0A2540]"
+                  className="px-4 py-3 text-left hover:bg-gray-50 rounded-xl transition font-medium flex items-center gap-3"
                 >
-                  Oferte Speciale
+                  <span className="text-xl">🖥️</span>
+                  <span>PC & Componente</span>
+                </button>
+                <button
+                  onClick={() => {
+                    onNavigate('category', 'tv-audio-video');
+                    setMobileMenuOpen(false);
+                  }}
+                  className="px-4 py-3 text-left hover:bg-gray-50 rounded-xl transition font-medium flex items-center gap-3"
+                >
+                  <span className="text-xl">📺</span>
+                  <span>TV & Audio</span>
+                </button>
+                <button
+                  onClick={() => {
+                    onNavigate('category', 'gaming');
+                    setMobileMenuOpen(false);
+                  }}
+                  className="px-4 py-3 text-left hover:bg-gray-50 rounded-xl transition font-medium flex items-center gap-3"
+                >
+                  <span className="text-xl">🎮</span>
+                  <span>Gaming</span>
+                </button>
+                <button
+                  onClick={() => {
+                    onNavigate('category', 'electrocasnice');
+                    setMobileMenuOpen(false);
+                  }}
+                  className="px-4 py-3 text-left hover:bg-gray-50 rounded-xl transition font-medium flex items-center gap-3"
+                >
+                  <span className="text-xl">🏠</span>
+                  <span>Electrocasnice</span>
+                </button>
+                <button
+                  onClick={() => {
+                    onNavigate('category', 'parfumuri-cosmetice');
+                    setMobileMenuOpen(false);
+                  }}
+                  className="px-4 py-3 text-left hover:bg-gray-50 rounded-xl transition font-medium flex items-center gap-3"
+                >
+                  <span className="text-xl">💄</span>
+                  <span>Parfumuri & Cosmetice</span>
+                </button>
+                <button
+                  onClick={() => {
+                    onNavigate('category', 'fashion-accesorii');
+                    setMobileMenuOpen(false);
+                  }}
+                  className="px-4 py-3 text-left hover:bg-gray-50 rounded-xl transition font-medium flex items-center gap-3"
+                >
+                  <span className="text-xl">👔</span>
+                  <span>Fashion & Accesorii</span>
+                </button>
+                <button
+                  onClick={() => {
+                    onNavigate('category', 'rechizite-scolare');
+                    setMobileMenuOpen(false);
+                  }}
+                  className="px-4 py-3 text-left hover:bg-gray-50 rounded-xl transition font-medium flex items-center gap-3"
+                >
+                  <span className="text-xl">📚</span>
+                  <span>Rechizite Școlare</span>
+                </button>
+                <button
+                  onClick={() => {
+                    onNavigate('wishlist');
+                    setMobileMenuOpen(false);
+                  }}
+                  className="px-4 py-3 text-left hover:bg-gray-50 rounded-xl transition font-medium flex items-center gap-3 border-t mt-2 pt-4"
+                >
+                  <span className="text-xl">❤️</span>
+                  <span>Favorite</span>
                 </button>
               </div>
             </div>
@@ -224,51 +297,7 @@ export default function Header({ onNavigate, currentPage, onSearchOpen }: Header
         </div>
       </div>
 
-      <div className="hidden md:block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer"></div>
-        <div className="max-w-7xl mx-auto px-4 py-3">
-          <div className="flex items-center justify-center gap-8 text-white font-semibold">
-            <button onClick={() => onNavigate('category', 'telefoane-tablete')} className="flex items-center gap-2 hover:scale-110 transition-transform">
-              <span className="text-2xl">📱</span>
-              <span className="text-sm">Telefoane & Tablete</span>
-            </button>
-            <button onClick={() => onNavigate('category', 'laptopuri')} className="flex items-center gap-2 hover:scale-110 transition-transform">
-              <span className="text-2xl">💻</span>
-              <span className="text-sm">Laptopuri</span>
-            </button>
-            <button onClick={() => onNavigate('category', 'calculatoare-componente')} className="flex items-center gap-2 hover:scale-110 transition-transform">
-              <span className="text-2xl">🖥️</span>
-              <span className="text-sm">PC & Componente</span>
-            </button>
-            <button onClick={() => onNavigate('category', 'tv-audio-video')} className="flex items-center gap-2 hover:scale-110 transition-transform">
-              <span className="text-2xl">📺</span>
-              <span className="text-sm">TV & Audio</span>
-            </button>
-            <button onClick={() => onNavigate('category', 'gaming')} className="flex items-center gap-2 hover:scale-110 transition-transform">
-              <span className="text-2xl">🎮</span>
-              <span className="text-sm">Gaming</span>
-            </button>
-            <button onClick={() => onNavigate('category', 'electrocasnice')} className="flex items-center gap-2 hover:scale-110 transition-transform">
-              <span className="text-2xl">🏠</span>
-              <span className="text-sm">Electrocasnice</span>
-            </button>
-            <button onClick={() => onNavigate('category', 'parfumuri-cosmetice')} className="flex items-center gap-2 hover:scale-110 transition-transform">
-              <span className="text-2xl">💄</span>
-              <span className="text-sm">Parfumuri</span>
-            </button>
-            <button onClick={() => onNavigate('category', 'fashion-accesorii')} className="flex items-center gap-2 hover:scale-110 transition-transform">
-              <span className="text-2xl">👔</span>
-              <span className="text-sm">Fashion</span>
-            </button>
-            <button onClick={() => onNavigate('category', 'rechizite-scolare')} className="flex items-center gap-2 hover:scale-110 transition-transform">
-              <span className="text-2xl">📚</span>
-              <span className="text-sm">Rechizite</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className="hidden md:block bg-white border-b">
+      <div className="hidden md:block bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 border-b shadow-lg">
         <div className="max-w-7xl mx-auto px-4">
           <MegaMenu onNavigate={onNavigate} />
         </div>

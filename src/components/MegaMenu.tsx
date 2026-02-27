@@ -304,7 +304,7 @@ export default function MegaMenu({ onNavigate }: MegaMenuProps) {
 
   return (
     <div className="relative">
-      <div className="flex items-center gap-6">
+      <div className="flex items-center justify-center gap-6 flex-wrap">
         {menuData.map((category) => (
           <div
             key={category.slug}
@@ -314,21 +314,21 @@ export default function MegaMenu({ onNavigate }: MegaMenuProps) {
           >
             <button
               onClick={() => onNavigate('category', category.slug)}
-              className="flex items-center gap-2 py-4 text-gray-700 hover:text-red-600 font-medium transition-colors"
+              className="flex items-center gap-2 py-4 text-white hover:text-yellow-400 font-medium transition-colors text-sm"
             >
               <span className="text-xl">{category.icon}</span>
               <span>{category.name}</span>
             </button>
 
             {activeCategory === category.slug && (
-              <div className="absolute left-0 top-full w-screen max-w-7xl bg-white shadow-2xl border-t-4 border-red-600 z-50 animate-fadeIn">
+              <div className="absolute left-0 top-full w-screen max-w-6xl bg-white shadow-2xl border-t-4 border-yellow-400 z-50 animate-fadeIn">
                 <div className="p-8">
-                  <div className="grid grid-cols-4 gap-8">
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                     {category.subcategories.map((subcat) => (
                       <div key={subcat.slug}>
                         <button
                           onClick={() => onNavigate('category', subcat.slug)}
-                          className="font-bold text-gray-900 hover:text-red-600 mb-3 flex items-center gap-1 group/item"
+                          className="font-bold text-gray-900 hover:text-yellow-600 mb-3 flex items-center gap-1 group/item"
                         >
                           {subcat.name}
                           <ChevronRight size={16} className="group-hover/item:translate-x-1 transition-transform" />
@@ -339,7 +339,7 @@ export default function MegaMenu({ onNavigate }: MegaMenuProps) {
                               <li key={item}>
                                 <button
                                   onClick={() => onNavigate('products')}
-                                  className="text-sm text-gray-600 hover:text-red-600 transition-colors"
+                                  className="text-sm text-gray-600 hover:text-yellow-600 transition-colors"
                                 >
                                   {item}
                                 </button>
@@ -354,12 +354,12 @@ export default function MegaMenu({ onNavigate }: MegaMenuProps) {
                   {category.featured && category.featured.length > 0 && (
                     <div className="mt-6 pt-6 border-t">
                       <h4 className="font-bold text-gray-900 mb-3">Produse Populare</h4>
-                      <div className="flex gap-4">
+                      <div className="flex gap-4 flex-wrap">
                         {category.featured.map((item) => (
                           <button
                             key={item}
                             onClick={() => onNavigate('products')}
-                            className="px-4 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition text-sm font-medium"
+                            className="px-4 py-2 bg-yellow-50 text-yellow-700 rounded-lg hover:bg-yellow-100 transition text-sm font-medium"
                           >
                             {item}
                           </button>
