@@ -34,9 +34,10 @@ export default function Header({ onNavigate, currentPage, onSearchOpen }: Header
             </a>
           </div>
           <div className="flex gap-4">
-            <button onClick={() => onNavigate('despre')} className="hover:text-[#0A2540] transition">Despre Noi</button>
-            <button onClick={() => onNavigate('contact')} className="hover:text-[#0A2540] transition">Contact</button>
-            <button className="hover:text-[#0A2540] transition">Ajutor</button>
+            <button onClick={() => onNavigate('despre-noi')} className="hover:text-cyan-400 transition">Despre Noi</button>
+            <button onClick={() => onNavigate('contact')} className="hover:text-cyan-400 transition">Contact</button>
+            <button onClick={() => onNavigate('politica-confidentialitate')} className="hover:text-cyan-400 transition">Politica de Confidențialitate</button>
+            <button onClick={() => onNavigate('termeni-conditii')} className="hover:text-cyan-400 transition">Termeni și Condiții</button>
           </div>
         </div>
       </div>
@@ -297,8 +298,8 @@ export default function Header({ onNavigate, currentPage, onSearchOpen }: Header
         </div>
       </div>
 
-      <div className="hidden md:block bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 border-b shadow-lg">
-        <div className="max-w-7xl mx-auto px-4">
+      <div className="hidden md:block border-b shadow-lg">
+        <div className="max-w-7xl mx-auto">
           <MegaMenu onNavigate={onNavigate} />
         </div>
       </div>

@@ -16,6 +16,10 @@ import CookieConsent from './components/CookieConsent';
 import LegalPage from './pages/LegalPage';
 import VendorMarketplacePage from './pages/VendorMarketplacePage';
 import FeaturesPage from './pages/FeaturesPage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsConditionsPage from './pages/TermsConditionsPage';
 import { CheckCircle } from 'lucide-react';
 
 function AppContent() {
@@ -82,9 +86,10 @@ function AppContent() {
         {currentPage === 'vendor-marketplace' && <VendorMarketplacePage onNavigate={navigate} />}
         {currentPage === 'favorites' && <ProfilePage onNavigate={navigate} />}
         {currentPage === 'wishlist' && <ProfilePage onNavigate={navigate} />}
-        {currentPage === 'despre' && <LegalPage slug="despre-noi" onNavigate={navigate} />}
-        {currentPage === 'contact' && <LegalPage slug="contact" onNavigate={navigate} />}
-        {currentPage === 'politica-confidentialitate' && <LegalPage slug="politica-confidentialitate" onNavigate={navigate} />}
+        {currentPage === 'despre-noi' && <AboutPage />}
+        {currentPage === 'contact' && <ContactPage />}
+        {currentPage === 'politica-confidentialitate' && <PrivacyPolicyPage />}
+        {currentPage === 'termeni-conditii' && <TermsConditionsPage />}
         {currentPage.startsWith('legal/') && <LegalPage slug={currentPage.replace('legal/', '')} onNavigate={navigate} />}
         {currentPage === 'feature-delivery' && <FeaturesPage feature="delivery" onNavigate={navigate} />}
         {currentPage === 'feature-returns' && <FeaturesPage feature="returns" onNavigate={navigate} />}

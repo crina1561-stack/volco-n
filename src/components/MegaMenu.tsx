@@ -299,79 +299,106 @@ const menuData: MenuCategory[] = [
   }
 ];
 
+const categoryColors = [
+  { from: '#2563eb', to: '#3b82f6', name: 'blue' },
+  { from: '#7c3aed', to: '#8b5cf6', name: 'violet' },
+  { from: '#059669', to: '#10b981', name: 'green' },
+  { from: '#dc2626', to: '#ef4444', name: 'red' },
+  { from: '#7c3aed', to: '#a855f7', name: 'purple' },
+  { from: '#db2777', to: '#ec4899', name: 'pink' },
+  { from: '#ea580c', to: '#f97316', name: 'orange' },
+  { from: '#0891b2', to: '#06b6d4', name: 'cyan' },
+  { from: '#4f46e5', to: '#6366f1', name: 'indigo' }
+];
+
 export default function MegaMenu({ onNavigate }: MegaMenuProps) {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   return (
     <div className="relative">
-      <div className="flex items-center justify-center gap-6 flex-wrap">
-        {menuData.map((category) => (
-          <div
-            key={category.slug}
-            className="relative group"
-            onMouseEnter={() => setActiveCategory(category.slug)}
-            onMouseLeave={() => setActiveCategory(null)}
-          >
-            <button
-              onClick={() => onNavigate('category', category.slug)}
-              className="flex items-center gap-2 py-4 text-white hover:text-yellow-400 font-medium transition-colors text-sm"
+      <div className="flex items-center justify-center gap-0 flex-wrap">
+        {menuData.map((category, index) => {
+          const colors = categoryColors[index % categoryColors.length];
+          return (
+            <div
+              key={category.slug}
+              className="relative group"
+              onMouseEnter={() => setActiveCategory(category.slug)}
+              onMouseLeave={() => setActiveCategory(null)}
+              style={{
+                background: `linear-gradient(135deg, ${colors.from}, ${colors.to})`
+              }}
             >
-              <span className="text-xl">{category.icon}</span>
-              <span>{category.name}</span>
-            </button>
+              <button
+                onClick={() => onNavigate('category', category.slug)}
+                className="flex items-center gap-2 px-4 py-3 text-white hover:bg-white/10 font-medium transition-colors text-sm"
+              >
+                <span className="text-lg">{category.icon}</span>
+                <span className="whitespace-nowrap">{category.name}</span>
+              </button>
 
-            {activeCategory === category.slug && (
-              <div className="absolute left-0 top-full w-screen max-w-6xl bg-white shadow-2xl border-t-4 border-yellow-400 z-50 animate-fadeIn">
-                <div className="p-8">
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                    {category.subcategories.map((subcat) => (
-                      <div key={subcat.slug}>
-                        <button
-                          onClick={() => onNavigate('category', subcat.slug)}
-                          className="font-bold text-gray-900 hover:text-yellow-600 mb-3 flex items-center gap-1 group/item"
-                        >
-                          {subcat.name}
-                          <ChevronRight size={16} className="group-hover/item:translate-x-1 transition-transform" />
-                        </button>
-                        {subcat.items && (
-                          <ul className="space-y-2">
-                            {subcat.items.map((item) => (
-                              <li key={item}>
-                                <button
-                                  onClick={() => onNavigate('products')}
-                                  className="text-sm text-gray-600 hover:text-yellow-600 transition-colors"
-                                >
-                                  {item}
-                                </button>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-
-                  {category.featured && category.featured.length > 0 && (
-                    <div className="mt-6 pt-6 border-t">
-                      <h4 className="font-bold text-gray-900 mb-3">Produse Populare</h4>
-                      <div className="flex gap-4 flex-wrap">
-                        {category.featured.map((item) => (
+              {activeCategory === category.slug && (
+                <div className="absolute left-0 top-full w-screen max-w-6xl bg-white shadow-2xl border-t-4 z-50 animate-fadeIn" style={{ borderTopColor: colors.to }}>
+                  <div className="p-8">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                      {category.subcategories.map((subcat) => (
+                        <div key={subcat.slug}>
                           <button
-                            key={item}
-                            onClick={() => onNavigate('products')}
-                            className="px-4 py-2 bg-yellow-50 text-yellow-700 rounded-lg hover:bg-yellow-100 transition text-sm font-medium"
+                            onClick={() => onNavigate('category', subcat.slug)}
+                            className="font-bold text-gray-900 hover:opacity-80 mb-3 flex items-center gap-1 group/item"
+                            style={{ color: colors.to }}
                           >
-                            {item}
+                            {subcat.name}
+                            <ChevronRight size={16} className="group-hover/item:translate-x-1 transition-transform" />
                           </button>
-                        ))}
-                      </div>
+                          {subcat.items && (
+                            <ul className="space-y-2">
+                              {subcat.items.map((item) => (
+                                <li key={item}>
+                                  <button
+                                    onClick={() => onNavigate('products')}
+                                    className="text-sm text-gray-600 hover:opacity-70 transition-colors"
+                                    style={{
+                                      color: '#6b7280',
+                                    }}
+                                    onMouseEnter={(e) => e.currentTarget.style.color = colors.to}
+                                    onMouseLeave={(e) => e.currentTarget.style.color = '#6b7280'}
+                                  >
+                                    {item}
+                                  </button>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+                      ))}
                     </div>
-                  )}
+
+                    {category.featured && category.featured.length > 0 && (
+                      <div className="mt-6 pt-6 border-t">
+                        <h4 className="font-bold text-gray-900 mb-3">Produse Populare</h4>
+                        <div className="flex gap-4 flex-wrap">
+                          {category.featured.map((item) => (
+                            <button
+                              key={item}
+                              onClick={() => onNavigate('products')}
+                              className="px-4 py-2 rounded-lg hover:opacity-90 transition text-sm font-medium text-white"
+                              style={{
+                                background: `linear-gradient(135deg, ${colors.from}, ${colors.to})`
+                              }}
+                            >
+                              {item}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
-        ))}
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
