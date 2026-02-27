@@ -250,51 +250,51 @@ export default function HomePage({ onNavigate }: HomePageProps) {
 
         <div
           onClick={() => onNavigate('vendor-marketplace')}
-          className="bg-gradient-to-r from-[#0A2540] via-blue-700 to-cyan-600 rounded-2xl p-12 text-white shadow-2xl mb-12 cursor-pointer hover:shadow-3xl transition-all hover:scale-[1.02]"
+          className="bg-gradient-to-r from-[#0A2540] via-blue-700 to-cyan-600 rounded-xl p-8 md:p-10 text-white shadow-xl mb-8 cursor-pointer hover:shadow-2xl transition-all hover:scale-[1.01]"
         >
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="bg-white/10 backdrop-blur-sm px-6 py-2 rounded-full">
-                <span className="font-bold text-lg">VOLCO Marketplace</span>
+          <div className="max-w-3xl mx-auto">
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <div className="bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full">
+                <span className="font-bold text-sm">VOLCO Marketplace</span>
               </div>
             </div>
-            <h2 className="text-5xl font-bold mb-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3 text-center">
               Crește-ți afacerea!
             </h2>
-            <p className="text-2xl mb-6 text-center">
+            <p className="text-lg md:text-xl mb-5 text-center">
               Acces instant la <span className="font-bold">sute de mii de clienți unici</span>, zilnic
             </p>
-            <div className="flex flex-wrap justify-center gap-6 mb-8">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">✓</span>
-                <span className="text-lg">Înregistrarea afacerii tale este <strong>gratuită</strong></span>
+            <div className="flex flex-col md:flex-row justify-center gap-3 md:gap-6 mb-6">
+              <div className="flex items-center justify-center gap-2">
+                <span className="text-xl">✓</span>
+                <span className="text-sm md:text-base">Înregistrarea afacerii tale este <strong>gratuită</strong></span>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">✓</span>
-                <span className="text-lg">Ești la doar <strong>câteva click-uri</strong> de vânzări spectaculoase</span>
+              <div className="flex items-center justify-center gap-2">
+                <span className="text-xl">✓</span>
+                <span className="text-sm md:text-base">Ești la doar <strong>câteva click-uri</strong> de vânzări spectaculoase</span>
               </div>
             </div>
             <div className="text-center">
-              <button className="bg-white text-[#0A2540] px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition shadow-xl inline-flex items-center gap-2">
+              <button className="bg-white text-[#0A2540] px-6 py-3 md:px-8 md:py-3.5 rounded-lg font-bold text-base md:text-lg hover:bg-gray-100 transition shadow-lg inline-flex items-center gap-2">
                 Vreau să vând pe VOLCO
-                <ChevronRight size={24} />
+                <ChevronRight size={20} />
               </button>
             </div>
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-12 text-white text-center shadow-2xl">
-          <h2 className="text-4xl font-bold mb-4">Abonează-te la Newsletter VOLCO</h2>
-          <p className="text-xl mb-8 text-red-100">
+        <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-xl p-8 md:p-10 text-white text-center shadow-xl">
+          <h2 className="text-2xl md:text-3xl font-bold mb-3">Abonează-te la Newsletter VOLCO</h2>
+          <p className="text-base md:text-lg mb-6 text-red-100">
             Primește oferte exclusive și noutăți despre cele mai noi produse
           </p>
-          <div className="max-w-md mx-auto flex gap-2">
+          <div className="max-w-md mx-auto flex flex-col md:flex-row gap-2">
             <input
               type="email"
               placeholder="Adresa ta de email"
-              className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+              className="flex-1 px-4 py-2.5 md:py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
             />
-            <button className="bg-white text-red-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
+            <button className="bg-white text-red-600 px-6 py-2.5 md:px-8 md:py-3 rounded-lg font-bold hover:bg-gray-100 transition whitespace-nowrap">
               Abonează-te
             </button>
           </div>
